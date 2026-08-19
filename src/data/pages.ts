@@ -98,6 +98,17 @@ export const PAGES = {
     footer: true,
     updated: "2026-08-18",
   },
+  "succession-index": {
+    path: "/succession-index/",
+    title: "Succession Index",
+    description:
+      "How old Treasure Valley businesses are, how many stop having employees each year, and how many establishments there are by trade.",
+    h1: "Treasure Valley Business Succession Index",
+    schemaType: "WebPage",
+    nav: true,
+    footer: true,
+    updated: "2026-08-19",
+  },
   insights: {
     path: "/insights/",
     title: "Insights",
