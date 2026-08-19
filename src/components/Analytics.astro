@@ -1,10 +1,25 @@
 ---
-// Renders only in production builds, and only once Jeff has an account.
+/**
+ * Cookieless analytics, production builds only, and only once an account
+ * exists. The script path is site specific and comes from data/entity.yaml, so
+ * it is never typed into a component.
+ */
 import { entity } from "@/lib/entity";
-const provider = entity.analytics?.provider;
-const domain = entity.analytics?.domain;
-const live = import.meta.env.PROD && provider === "plausible" && !!domain;
+const analytics = entity.analytics ?? {};
+const scriptUrl = analytics.script_url;
+const live = import.meta.env.PROD && analytics.provider === "plausible" && !!scriptUrl;
 ---
 {live && (
-  <script is:inline defer data-domain={domain} src="https://plausible.io/js/script.outbound-links.js"></script>
+  <>
+    <script is:inline async src={scriptUrl}></script>
+    <script is:inline>
+      window.plausible = window.plausible || function () {
+        (window.plausible.q = window.plausible.q || []).push(arguments);
+      };
+      window.plausible.init = window.plausible.init || function (i) {
+        window.plausible.o = i || {};
+      };
+      window.plausible.init();
+    </script>
+  </>
 )}

@@ -29,7 +29,8 @@
   },
   "analytics": {
     "provider": "plausible",
-    "domain": "swabian.co"
+    "domain": "swabian.co",
+    "script_url": "https://plausible.io/js/pa-IndvgVTzTjXt2o-1j0LQn.js"
   },
   "founder": {
     "name": "Jeff Richardson",
