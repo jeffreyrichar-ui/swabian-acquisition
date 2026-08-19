@@ -26,9 +26,40 @@ const nodes = graph([
 ]);
 ---
 <Base {title} description={page.description} {canonical} graph={nodes}>
-  <div class="narrow">
-    <h1>{page.h1}</h1>
-    <slot />
-    <Faq items={faqItems} />
-  </div>
+  {pageKey === "home" ? (
+    <>
+      <div class="hero">
+        <div class="wrap hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Boise, Idaho</p>
+            <h1>{page.h1}</h1>
+            <slot name="answer" />
+            <p class="hero-actions">
+              <a class="cta" href={`tel:${entity.contact.telephone}`}>Call {entity.contact.telephone_display}</a>
+              <a class="cta-ghost" href="/what-we-buy/">What I buy</a>
+            </p>
+          </div>
+          <figure class="hero-portrait">
+            <img src="/images/jeffrey-richardson.jpg" width="360" height="450"
+                 alt={`${entity.founder.name}, Owner of ${entity.name}`} fetchpriority="high" />
+            <figcaption>{entity.founder.name}, Owner</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="wrap">
+        <div class="body">
+          <slot />
+          <Faq items={faqItems} />
+        </div>
+      </div>
+    </>
+  ) : (
+    <div class="wrap">
+      <div class="body">
+        <h1>{page.h1}</h1>
+        <slot />
+        <Faq items={faqItems} />
+      </div>
+    </div>
+  )}
 </Base>

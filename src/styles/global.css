@@ -29,7 +29,7 @@
   --line: rgba(26, 24, 20, 0.15);
   --serif: "Fraunces", "Fraunces Fallback", Georgia, "Times New Roman", serif;
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --measure: 34rem;
+  --measure: 40rem;
   --gap: clamp(1.5rem, 4vw, 3rem);
 }
 
@@ -131,3 +131,80 @@ article.prose blockquote {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* ---- Hero -------------------------------------------------------------
+   Two columns on desktop, stacked on mobile. The portrait matters: the whole
+   pitch is that a seller knows exactly who is buying, so show the person. The
+   image is a plain <img> with width and height set, so it costs no JS and
+   reserves its space before it loads. */
+.hero {
+  background: linear-gradient(180deg, rgba(255,255,255,0.45), rgba(255,255,255,0));
+  border-bottom: 1px solid var(--line);
+  padding: clamp(2rem, 5vw, 3.5rem) 0 clamp(2rem, 4vw, 3rem);
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 5vw, 3.5rem);
+  align-items: start;
+}
+.hero h1 { margin-top: 0.35rem; }
+.hero .answer {
+  border-left: 3px solid var(--rust-light);
+  background: rgba(255,255,255,0.5);
+  padding: 0.9rem 1.1rem;
+  max-width: none;
+}
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin: 0;
+}
+.hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; max-width: none; }
+.cta-ghost {
+  display: inline-block; padding: 0.7rem 1.3rem;
+  border: 1px solid var(--rust); color: var(--rust); text-decoration: none;
+}
+.cta-ghost:hover { background: var(--rust); color: var(--cream); }
+.cta { margin-top: 0; }
+
+.hero-portrait { margin: 0; }
+.hero-portrait img {
+  display: block; width: 100%; height: auto;
+  border: 1px solid var(--line);
+  filter: saturate(0.92);
+}
+.hero-portrait figcaption {
+  margin-top: 0.6rem; font-size: 0.9rem; color: var(--muted);
+  border-left: 2px solid var(--rust-light); padding-left: 0.6rem;
+}
+
+@media (max-width: 46rem) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-portrait { order: -1; max-width: 13rem; }
+}
+
+/* ---- Navigation -------------------------------------------------------
+   Seven links plus the brand overflowed onto a second line at desktop widths.
+   Tightening the scale and letting the list sit on its own row below the brand
+   at narrow widths keeps it on one line without a menu button or any JS. */
+header.site .bar { flex-wrap: wrap; }
+nav.site ul { gap: 0.3rem 0.95rem; }
+nav.site a { font-size: 0.9rem; white-space: nowrap; }
+
+/* ---- Rhythm -----------------------------------------------------------
+   Flat cream from top to bottom read as a document rather than a site. Section
+   headings get a rule, and tables sit on white so they register as objects. */
+main h2 { padding-top: 0.35em; border-top: 1px solid var(--line); }
+.hero h2, .post-list h2, .criteria h2, article.prose h2:first-of-type { border-top: 0; padding-top: 0; }
+.scroll-x table { background: rgba(255,255,255,0.5); }
+.scroll-x th { background: rgba(255,255,255,0.6); }
+th, td { padding: 0.6rem 0.9rem; }
+tbody tr:last-child td { border-bottom: 0; }
+
+/* The body column shares its left edge with the hero rather than centring in a
+   narrower box, so the eye follows one line down the page instead of two. */
+.body { width: min(100%, 44rem); margin-inline: 0; }

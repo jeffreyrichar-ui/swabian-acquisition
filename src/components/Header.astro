@@ -10,7 +10,7 @@ const here = Astro.url.pathname;
     <nav class="site" aria-label="Main">
       <ul>
         {navPages().map((p) => (
-          <li><a href={p.path} aria-current={here === p.path ? "page" : undefined}>{p.title}</a></li>
+          <li><a href={p.path} aria-current={here === p.path ? "page" : undefined}>{p.navLabel ?? p.title}</a></li>
         ))}
       </ul>
     </nav>

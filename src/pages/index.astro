@@ -3,7 +3,7 @@ import Page from "@/layouts/Page.astro";
 import { entity } from "@/lib/entity";
 ---
 <Page pageKey="home">
-  <p class="answer">I am Jeff Richardson, Owner of {entity.name} in Boise, Idaho. I want to buy an established business in Boise or the Treasure Valley with $1 million or more in annual revenue, preferably a B2B or commercial services company operating five or more years. If you own one and are thinking about selling, call me at {entity.contact.telephone_display}.</p>
+  <p class="answer" slot="answer">I am Jeff Richardson, Owner of {entity.name} in Boise, Idaho. I want to buy an established business in Boise or the Treasure Valley with $1 million or more in annual revenue, preferably a B2B or commercial services company operating five or more years. If you own one and are thinking about selling, call me at {entity.contact.telephone_display}.</p>
 
 <h2>What I am looking for</h2>
 <div class="scroll-x">
