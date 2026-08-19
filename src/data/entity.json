@@ -1,14 +1,14 @@
 {
   "name": "Swabian Acquisition",
   "legal_name": null,
-  "legal_status": "not yet registered",
+  "legal_status": "filed 2026-08-19, awaiting processing",
   "pending_legal_name": "Swabian Acquisition LLC",
   "sos_filing_number": "[[TBD]]",
   "sos_state": "ID",
   "founding_date": "[[TBD]]",
   "url": "https://swabian.co",
   "title_pattern": "{page} | Swabian Acquisition",
-  "home_title": "Swabian Acquisition | Buying one Treasure Valley business",
+  "home_title": "Swabian Acquisition | Buying a Treasure Valley business",
   "contact": {
     "email": "jeffrey.richardson@swabian.co",
     "telephone": "+1-208-890-4649",
@@ -55,12 +55,40 @@
       "same_as": "https://en.wikipedia.org/wiki/Treasure_Valley"
     },
     {
+      "name": "Southwest Idaho",
+      "same_as": "https://en.wikipedia.org/wiki/Southwestern_Idaho"
+    },
+    {
       "name": "Ada County",
       "same_as": "https://en.wikipedia.org/wiki/Ada_County,_Idaho"
     },
     {
       "name": "Canyon County",
       "same_as": "https://en.wikipedia.org/wiki/Canyon_County,_Idaho"
+    },
+    {
+      "name": "Gem County",
+      "same_as": "https://en.wikipedia.org/wiki/Gem_County,_Idaho"
+    },
+    {
+      "name": "Payette County",
+      "same_as": "https://en.wikipedia.org/wiki/Payette_County,_Idaho"
+    },
+    {
+      "name": "Owyhee County",
+      "same_as": "https://en.wikipedia.org/wiki/Owyhee_County,_Idaho"
+    },
+    {
+      "name": "Boise County",
+      "same_as": "https://en.wikipedia.org/wiki/Boise_County,_Idaho"
+    },
+    {
+      "name": "Elmore County",
+      "same_as": "https://en.wikipedia.org/wiki/Elmore_County,_Idaho"
+    },
+    {
+      "name": "Washington County",
+      "same_as": "https://en.wikipedia.org/wiki/Washington_County,_Idaho"
     },
     {
       "name": "Boise",
@@ -108,12 +136,11 @@
     "Licensed trades"
   ],
   "criteria": {
-    "geography": "Ada and Canyon counties, Idaho",
+    "geography": "the Treasure Valley and southwest Idaho",
     "revenue_min_usd": 1000000,
     "revenue_max_usd": null,
     "preferred": "B2B and commercial services",
     "min_years_operating": 5,
-    "count": "one business",
     "exclusions": [
       "restaurants",
       "retail",
@@ -124,8 +151,8 @@
     ]
   },
   "descriptions": {
-    "short": "Jeff Richardson buys one established Treasure Valley business with at least $1 million in revenue. Boise based, direct, no brokers.",
-    "long": "Swabian Acquisition is a Boise, Idaho company formed to buy one established business in the Treasure Valley and own it for the long term. Jeff Richardson, the Owner, is looking for a business in Ada or Canyon County with at least $1 million in annual revenue, preferably a B2B or commercial services company that has operated five or more years. Swabian is not a fund, a broker, or a search vehicle. After a purchase, Swabian puts professional management in place and works with the seller on what happens to the company: who runs it, the timeline, staffing and key people, the company name, and the seller's own role after close."
+    "short": "Jeff Richardson buys established businesses in the Treasure Valley and southwest Idaho, $1 million revenue and up. Boise based, direct, no brokers.",
+    "long": "Swabian Acquisition is a Boise, Idaho company formed to buy an established business in the Treasure Valley and the wider southwest of the state, and own it for the long term. Jeff Richardson, the Owner, is looking for a business in Ada or Canyon County with at least $1 million in annual revenue, preferably a B2B or commercial services company that has operated five or more years. Swabian is not a fund, a broker, or a search vehicle. After a purchase, Swabian puts professional management in place and works with the seller on what happens to the company: who runs it, the timeline, staffing and key people, the company name, and the seller's own role after close."
   },
   "closing_language": "a quick, professional closing within 90 days",
   "_generated": {
