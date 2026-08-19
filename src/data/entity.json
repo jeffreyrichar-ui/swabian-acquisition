@@ -15,7 +15,7 @@
     "telephone_display": "(208) 890-4649",
     "form": {
       "provider": "formspree",
-      "endpoint": "REPLACE_ME",
+      "endpoint": "https://formspree.io/f/mnpalgzr",
       "honeypot_field": "_gotcha",
       "min_seconds_before_submit": 3
     }
