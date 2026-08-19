@@ -20,10 +20,10 @@ export interface PageDef {
 export const PAGES = {
   home: {
     path: "/",
-    title: "Buying one Treasure Valley business",
+    title: "Buying a Treasure Valley business",
     description:
-      "Jeff Richardson buys one established Treasure Valley business with at least $1 million in revenue. Boise based, direct, no brokers.",
-    h1: "I want to buy one good business in the Treasure Valley.",
+      "Jeff Richardson buys an established Treasure Valley business with at least $1 million in revenue. Boise based, direct, no brokers.",
+    h1: "I want to buy an established business in the Treasure Valley.",
     schemaType: "WebPage",
     nav: false,
     footer: false,
