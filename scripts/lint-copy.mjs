@@ -30,6 +30,12 @@ for (const file of ROOTS.flatMap(walk)) {
         console.error(`${at}: banned term "${term}"`); failures++;
       }
     }
+    for (const term of banned.wordBoundary ?? []) {
+      // Whole word only: "journeyman" is a licence class, not marketing language.
+      if (new RegExp(`\\b${term}\\b`, "i").test(line)) {
+        console.error(`${at}: banned term "${term}"`); failures++;
+      }
+    }
     for (const term of banned.caseSensitive) {
       if (new RegExp(`\\b${term}\\b`).test(line)) {
         console.error(`${at}: banned term "${term}"`); failures++;
