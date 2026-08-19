@@ -70,6 +70,16 @@ for (const file of htmlFiles(DIST)) {
     fail(`${rel}: loads Google Fonts; fonts must be self hosted`);
 
   if (html.includes("—") || html.includes("–")) fail(`${rel}: em or en dash in output`);
+
+  // A legal suffix is a claim that a registered entity exists. Until
+  // entity.legal_name is set from a real filing, no page may carry one.
+  if (!entity.legal_name) {
+    for (const suffix of ["Swabian Acquisition, Inc", "Swabian Acquisition Inc",
+                          "Swabian Acquisition, LLC", "Swabian Acquisition LLC"]) {
+      if (html.includes(suffix))
+        fail(`${rel}: says "${suffix}" but no entity is registered (data/entity.yaml legal_name is null)`);
+    }
+  }
   if (html.includes("REPLACE_ME")) console.warn(`  note: ${rel} still has a REPLACE_ME placeholder`);
 
   // JSON-LD must parse and carry the entity
