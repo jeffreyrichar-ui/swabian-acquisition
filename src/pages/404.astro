@@ -1,0 +1,23 @@
+---
+import Base from "@/layouts/Base.astro";
+import { entity } from "@/lib/entity";
+const canonical = new URL("/404/", entity.url).href;
+---
+<Base title={`Page not found | ${entity.name}`}
+      description="That page is not here. Links to what Swabian Acquisition buys, the process for owners, and how to reach Jeff Richardson in Boise."
+      {canonical} noindex>
+  <div class="narrow">
+    <h1>That page is not here</h1>
+    <p class="answer">The page you asked for does not exist, or it moved when the site was
+      rebuilt. The main pages are below, and if you were looking for something specific,
+      write and I will point you to it.</p>
+    <ul>
+      <li><a href="/what-we-buy/">What we buy</a></li>
+      <li><a href="/for-owners/">For owners</a></li>
+      <li><a href="/for-advisors/">For advisors</a></li>
+      <li><a href="/process/">Process</a></li>
+      <li><a href="/about/">About Jeff Richardson</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+  </div>
+</Base>

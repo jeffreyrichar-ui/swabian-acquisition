@@ -1,0 +1,34 @@
+---
+import Base from "./Base.astro";
+import Faq from "@/components/Faq.astro";
+import { getPage, type PageKey } from "@/data/pages";
+import { entity } from "@/lib/entity";
+import { graph, organization, person, website, webPage, breadcrumbs, faqPage } from "@/lib/schema";
+import { getEntry } from "astro:content";
+
+interface Props { pageKey: PageKey }
+const { pageKey } = Astro.props;
+const page = getPage(pageKey);
+const canonical = new URL(page.path, entity.url).href;
+const title = pageKey === "home"
+  ? `${entity.name} | ${page.title}`
+  : `${page.title} | ${entity.name}`;
+
+let faqItems: { question: string; answer: string }[] = [];
+if (page.faq) {
+  const entry = await getEntry("faq", page.faq);
+  faqItems = entry?.data.items ?? [];
+}
+
+const nodes = graph([
+  organization(), person(), website(), webPage(page),
+  breadcrumbs(page), faqPage(faqItems),
+]);
+---
+<Base {title} description={page.description} {canonical} graph={nodes}>
+  <div class="narrow">
+    <h1>{page.h1}</h1>
+    <slot />
+    <Faq items={faqItems} />
+  </div>
+</Base>

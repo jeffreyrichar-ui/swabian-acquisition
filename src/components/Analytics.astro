@@ -1,0 +1,10 @@
+---
+// Renders only in production builds, and only once Jeff has an account.
+import { entity } from "@/lib/entity";
+const provider = entity.analytics?.provider;
+const domain = entity.analytics?.domain;
+const live = import.meta.env.PROD && provider === "plausible" && !!domain;
+---
+{live && (
+  <script is:inline defer data-domain={domain} src="https://plausible.io/js/script.outbound-links.js"></script>
+)}

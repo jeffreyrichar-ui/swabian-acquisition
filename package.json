@@ -1,0 +1,24 @@
+{
+  "name": "swabian-acquisition-site",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "engines": { "node": ">=22.12" },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && node scripts/validate-dist.mjs",
+    "preview": "astro preview",
+    "check": "astro check && node scripts/check-registry.mjs && node scripts/lint-copy.mjs",
+    "ci": "npm run check && npm run build",
+    "new:post": "node scripts/new-post.mjs"
+  },
+  "dependencies": {
+    "astro": "^7.2.3",
+    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/rss": "^4.0.12"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "typescript": "^5.9.0"
+  }
+}

@@ -1,0 +1,45 @@
+---
+import Page from "@/layouts/Page.astro";
+import { entity, mailHref, phoneHref } from "@/lib/entity";
+import ContactForm from "@/components/ContactForm.astro";
+---
+<Page pageKey="contact">
+  <p class="answer">To talk about selling your Treasure Valley business, call Jeff Richardson at {entity.contact.telephone_display} or email {entity.contact.email}. Or send the three-field form below: your name, how to reach you, and a line about your business. Jeff reads every message himself, replies personally, and keeps every conversation confidential. The first conversation is 30 minutes and needs no documents.</p>
+
+<h2>What are the three fields?</h2>
+<ol>
+  <li>Your name (a first name is fine)</li>
+  <li>The best way to reach you: email or phone, whichever you prefer</li>
+  <li>A line or two about your business, or what you would like to talk about (optional)</li>
+</ol>
+<p>That is the whole form. No revenue dropdowns, no "how did you hear about us." Please do not attach or paste financials. Nothing financial changes hands until we have talked and a confidentiality agreement is signed.</p>
+<h2>What happens after you write?</h2>
+<ol>
+  <li>I read it myself. Nobody else does.</li>
+  <li>I reply personally to set up a 30-minute call at a time that suits you, evenings included, or answer your question if that is all you wanted.</li>
+  <li>On the call I tell you plainly whether your business looks like a fit.</li>
+  <li>If it does, and you want to keep going, I send a short confidentiality agreement before I ask for any numbers.</li>
+  <li>If it does not, I say so, and where I can I suggest someone better suited. Your message goes no further.</li>
+</ol>
+<h2>Would you rather call?</h2>
+<p>{entity.contact.telephone_display}, Mountain time. If I do not pick up, leave a message and I will call you back. You do not need to say much: your name, your number, and that you own a business in the Treasure Valley is plenty.</p>
+<h2>Who should write?</h2>
+<ul>
+  <li>Owners of a Treasure Valley business with $1 million or more in revenue who are thinking about selling, now or in a few years.</li>
+  <li>CPAs, attorneys, bankers, and wealth advisors with a client who might fit. Start with no names. The <a href="/for-advisors/">for advisors</a> page explains how we handle introductions, confidentiality, and fees.</li>
+  <li>Business brokers with a listing in Ada or Canyon County that fits <a href="/what-we-buy/">what I buy</a>.</li>
+  <li>Anyone who knows an owner and thinks we should talk.</li>
+</ul>
+<p>If you are not sure whether you fit, write anyway.</p>
+<h2>Where am I?</h2>
+<p>Boise, Idaho. I meet owners anywhere in Ada or Canyon County: at your place after hours, a coffee shop in your town, or by phone if that is easier.</p>
+<p>
+  <strong>{entity.legal_name}</strong><br />
+  Jeff Richardson, {entity.founder.job_title}<br />
+  <a href={mailHref}>{entity.contact.email}</a><br />
+  <a href={phoneHref}>{entity.contact.telephone_display}</a>
+</p>
+
+<h2>Or use the form</h2>
+<ContactForm />
+</Page>

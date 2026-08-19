@@ -1,0 +1,29 @@
+---
+import { entity } from "@/lib/entity";
+interface Props {
+  title: string; description: string; canonical: string;
+  ogType?: "website" | "article"; noindex?: boolean;
+}
+const { title, description, canonical, ogType = "website", noindex = false } = Astro.props;
+const ogImage = new URL("/images/og-default.png", entity.url).href;
+---
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+{noindex && <meta name="robots" content="noindex, follow" />}
+{!noindex && <meta name="robots" content="index, follow, max-image-preview:large" />}
+<meta property="og:site_name" content={entity.name} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:type" content={ogType} />
+<meta property="og:image" content={ogImage} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/images/shield-mark-512.png" />
+<link rel="alternate" type="application/rss+xml" title={entity.name} href="/rss.xml" />

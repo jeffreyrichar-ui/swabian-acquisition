@@ -1,0 +1,42 @@
+---
+import Base from "@/layouts/Base.astro";
+import { getCollection, render } from "astro:content";
+import { entity } from "@/lib/entity";
+import { graph, organization, person, website, article } from "@/lib/schema";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts", ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const path = `/insights/${post.id}/`;
+const canonical = new URL(path, entity.url).href;
+const nodes = graph([organization(), person(), website(), article({ ...post.data, path })]);
+const fmt = (d: Date) => d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+---
+<Base
+  title={`${post.data.title} | ${entity.name}`}
+  description={post.data.description}
+  canonical={canonical}
+  graph={nodes}
+  ogType="article"
+>
+  <article class="narrow prose">
+    <h1>{post.data.title}</h1>
+    <p><small>
+      Published {fmt(post.data.pubDate)}
+      {post.data.updatedDate && <> and updated {fmt(post.data.updatedDate)}</>}
+      by Jeff Richardson
+    </small></p>
+    <Content />
+    {post.data.sources.length > 0 && (
+      <section>
+        <h2>Sources</h2>
+        <ul>{post.data.sources.map((s: string) => <li><a href={s}>{s}</a></li>)}</ul>
+      </section>
+    )}
+    <p><a href="/contact/">Thinking about selling? Get in touch.</a></p>
+  </article>
+</Base>
