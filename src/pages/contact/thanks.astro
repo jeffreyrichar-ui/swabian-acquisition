@@ -1,0 +1,17 @@
+---
+import Base from "@/layouts/Base.astro";
+import { entity, mailHref, phoneHref } from "@/lib/entity";
+const canonical = new URL("/contact/thanks/", entity.url).href;
+---
+<Base title={`Thank you | ${entity.name}`}
+      description="Your message reached Jeff Richardson at Swabian Acquisition in Boise, Idaho."
+      {canonical} noindex>
+  <div class="narrow">
+    <h1>Thank you</h1>
+    <p class="answer">Your message came through. I read every one myself and will reply
+      personally, usually within a day. Nothing you send is shared with anyone.</p>
+    <p>If it is easier to talk, call me at <a href={phoneHref}>{entity.contact.telephone_display}</a>
+      or write to <a href={mailHref}>{entity.contact.email}</a>.</p>
+    <p><a href="/">Back to the home page</a></p>
+  </div>
+</Base>

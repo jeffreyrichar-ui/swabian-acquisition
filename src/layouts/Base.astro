@@ -1,0 +1,28 @@
+---
+import "@/styles/global.css";
+import SEO from "@/components/SEO.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Analytics from "@/components/Analytics.astro";
+
+interface Props {
+  title: string; description: string; canonical: string;
+  graph?: unknown; ogType?: "website" | "article"; noindex?: boolean;
+}
+const { title, description, canonical, graph, ogType, noindex } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <SEO {title} {description} {canonical} {ogType} {noindex} />
+    {graph && <script type="application/ld+json" set:html={JSON.stringify(graph)} />}
+    <Analytics />
+  </head>
+  <body>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

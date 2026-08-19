@@ -1,0 +1,56 @@
+---
+import Page from "@/layouts/Page.astro";
+import { entity } from "@/lib/entity";
+---
+<Page pageKey="about">
+  <p class="answer">Jeff Richardson is the Owner of {entity.name}, a Boise, Idaho company formed to buy an established Treasure Valley business. He holds an MBA from Northwestern's Kellogg School of Management, worked in financial analytics at ServiceLink, a Fidelity National Financial company, and did strategy consulting at EY. He has spent several years studying Treasure Valley businesses.</p>
+
+<h2>Who is Jeff Richardson?</h2>
+<p>I am Jeffrey (Jeff) Richardson, Owner of {entity.name} I live in Boise, Idaho, and the company exists for one reason: to buy a good, established business in the Treasure Valley and own it for a long time.</p>
+<p>Before this, I worked in financial analytics at ServiceLink, a Fidelity National Financial (FNF) company, and in strategy consulting at EY. I hold an MBA from the Kellogg School of Management at Northwestern University. The short version is that I have spent my career reading businesses through their numbers and helping the people who run them make decisions. I can tell the difference between a good business with messy books and a messy business with good marketing, and I do not need a broker's packet to see the value in a company that has quietly done well for a long time.</p>
+<div class="scroll-x">
+  <table>
+    <thead><tr><th>Fact</th><th>Detail</th></tr></thead>
+    <tbody>
+    <tr><td>Name</td><td>Jeffrey (Jeff) Richardson</td></tr>
+    <tr><td>Title</td><td>Owner</td></tr>
+    <tr><td>Company</td><td>{entity.name}</td></tr>
+    <tr><td>Location</td><td>Boise, Idaho</td></tr>
+    <tr><td>Education</td><td>MBA, Kellogg School of Management, Northwestern University</td></tr>
+    <tr><td>Prior work</td><td>Financial analytics, ServiceLink (Fidelity National Financial); strategy consulting, EY</td></tr>
+    <tr><td>Buying</td><td>One Treasure Valley business, $1 million or more in annual revenue</td></tr>
+    <tr><td>Email</td><td>{entity.contact.email}</td></tr>
+    <tr><td>Phone</td><td>{entity.contact.telephone_display}</td></tr>
+    </tbody>
+  </table>
+</div>
+<h2>What kinds of businesses have I studied?</h2>
+<p>I have spent several years studying Treasure Valley businesses, mostly in unglamorous corners. Sectors I have looked at closely include:</p>
+<ul>
+  <li>Medical equipment service</li>
+  <li>Industrial calibration</li>
+  <li>Commercial irrigation</li>
+  <li>Fleet compliance</li>
+  <li>Cemetery management</li>
+  <li>Architectural and drafting services</li>
+  <li>The licensed trades: plumbing, HVAC, and electrical</li>
+</ul>
+<p>I like companies that do necessary work well, get paid by other businesses, and have been at it long enough that customers call them by habit. That list is not a boundary. It is evidence that I take essential, unshowy businesses seriously, and that I can tell a good one from a bad one in fields most buyers skip.</p>
+<p>There are more of these here than most people guess. Ada and Canyon counties had 422 plumbing and HVAC contractor establishments, 358 electrical contractors, and 642 landscaping companies in 2024, and about 370 janitorial companies in 2025 [BLS QCEW]. Most are owned by one person or one family, and a lot of those owners are getting close to the point where they will want to sell.</p>
+<p>What I look at in a business is unglamorous too: how it gets customers, who holds the licenses and the relationships, how much of it runs through the owner's head, and whether it survived its last bad year.</p>
+<h2>What is Swabian Acquisition, and what is it not?</h2>
+<p>{entity.name} is a Boise, Idaho company. It is mine, and it has one purpose. To be plain about what it is not:</p>
+<ul>
+  <li>Not a fund with a portfolio and an exit clock.</li>
+  <li>Not a broker. I do not represent sellers or take listings.</li>
+  <li>Not a team. It is me, plus the accountant and attorney I engage for a specific transaction.</li>
+  <li>Not a collector. There is no plan to buy a string of companies and stitch them together. Whatever I buy, I keep, and it keeps its own name.</li>
+</ul>
+<h2>What will I do with the business after I buy it?</h2>
+<p>I will own it. I do not plan to run it day to day myself. I put professional management in place: the team already there, a manager we hire, or someone the seller helps choose. My job as owner is budgets and reinvestment, hiring the right leader, keeping the promises made at closing, and staying out of the way of people who know the work better than I do.</p>
+<p>How the seller fits into that, and for how long, is something we work out together, early, and in writing.</p>
+<h2>Why the name Swabian?</h2>
+<p>Swabia is a region in southwest Germany known for careful, frugal, family-owned companies that stay independent for generations, run by people who would rather fix a machine than replace it and who spend less than they earn. That is the kind of company I want to buy, and the kind of owner I want to be. The name is a standard to hold myself to.</p>
+<h2>How do you reach me?</h2>
+<p>Call {entity.contact.telephone_display} or email {entity.contact.email}. You get me, not an assistant. The first conversation is 30 minutes and confidential.</p>
+</Page>

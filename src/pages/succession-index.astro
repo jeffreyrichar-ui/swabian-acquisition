@@ -1,0 +1,133 @@
+---
+import Base from "@/layouts/Base.astro";
+import { entity } from "@/lib/entity";
+import { graph, organization, person, website } from "@/lib/schema";
+
+const edition = "2026Q3";
+const canonical = new URL("/succession-index/", entity.url).href;
+const dataUrl = `${entity.url}/succession-index/${edition}/tvbsi_indicators_${edition}.csv`;
+
+const dataset = {
+  "@type": "Dataset",
+  name: `Treasure Valley Business Succession Index, ${edition}`,
+  description:
+    "How old the businesses in Ada and Canyon counties are, how many stop having " +
+    "employees each year, and how many establishments there are by trade. Built " +
+    "only from data published by federal statistical agencies.",
+  url: canonical,
+  identifier: `tvbsi-${edition}`,
+  license: "https://creativecommons.org/licenses/by/4.0/",
+  creator: { "@id": `${entity.url}/#organization` },
+  spatialCoverage: "the Treasure Valley and southwest Idaho",
+  isAccessibleForFree: true,
+  distribution: [
+    { "@type": "DataDownload", encodingFormat: "text/csv", contentUrl: dataUrl },
+  ],
+};
+
+const nodes = graph([organization(), person(), website(), dataset]);
+---
+<Base
+  title={`Treasure Valley Business Succession Index | ${entity.name}`}
+  description="How old Treasure Valley businesses are, how many stop having employees each year, and how many establishments there are by trade. Federal data, sources shown."
+  canonical={canonical}
+  graph={nodes}
+>
+  <div class="narrow prose">
+    <h1>Treasure Valley Business Succession Index</h1>
+    <p class="answer">42.2% of employer firms in the Boise metro area have been trading for 11 years or more. That is 7,342 companies out of 17,411, counted by the Census Bureau in 2023. This page reports how old the businesses here are, how many stop having employees each year, and how many establishments there are in the trades where ownership tends to change hands.</p>
+
+    <h2>How long have Treasure Valley businesses been trading?</h2>
+
+    <div class="scroll-x">
+      <table>
+        <thead><tr><th>Area</th><th>Employer firms</th><th>Trading 11 years or more</th><th>Share</th></tr></thead>
+        <tbody>
+        <tr><td>Boise metro</td><td>17,411</td><td>7,342</td><td>42.2%</td></tr>
+        <tr><td>Ada County</td><td>12,549</td><td>5,602</td><td>44.6%</td></tr>
+        <tr><td>Canyon County</td><td>4,570</td><td>1,838</td><td>40.2%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Firm age is not owner age. Nobody publishes owner ages by county, and this page does not estimate them. What it measures is how many companies here are old enough that a change of ownership is a live question.</p>
+
+    <h2>How many stop having employees each year?</h2>
+
+    <p>1,768 employer firms in the Boise metro area ceased to have employees in 2023, out of 17,411 firms.</p>
+
+    <p>The Census Bureau counts a firm death when a company with employees in one year has none the next. It does not separate a sale from a closure, and neither does this page.</p>
+
+    <h2>How many businesses are there, by trade?</h2>
+
+    <div class="scroll-x">
+      <table>
+        <thead><tr><th>Industry</th><th>Establishments</th><th>Change since 2019</th></tr></thead>
+        <tbody>
+        <tr><td>All private industry</td><td>35,388</td><td>+66%</td></tr>
+        <tr><td>Construction</td><td>4,736</td><td>+55%</td></tr>
+        <tr><td>Plumbing, heating and air conditioning contractors</td><td>416</td><td>+55%</td></tr>
+        <tr><td>Electrical contractors</td><td>342</td><td>+54%</td></tr>
+        <tr><td>Landscaping services</td><td>643</td><td>+70%</td></tr>
+        <tr><td>Janitorial services</td><td>370</td><td>+57%</td></tr>
+        <tr><td>Electronic and precision equipment repair</td><td>45</td><td>not comparable</td></tr>
+        <tr><td>Testing laboratories</td><td>32</td><td>+45%</td></tr>
+        <tr><td>Architectural services</td><td>94</td><td>+81%</td></tr>
+        <tr><td>Truck transportation</td><td>483</td><td>+46%</td></tr>
+        <tr><td>Dental offices</td><td>418</td><td>+41%</td></tr>
+        <tr><td>Personal care services</td><td>477</td><td>+111%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>That growth is steady rather than a jump in the numbers. Private establishments across both counties, year by year:</p>
+
+    <div class="scroll-x">
+      <table>
+        <thead><tr><th>Year</th><th>Establishments</th></tr></thead>
+        <tbody>
+        <tr><td>2019</td><td>21,327</td></tr>
+        <tr><td>2020</td><td>23,499</td></tr>
+        <tr><td>2021</td><td>26,310</td></tr>
+        <tr><td>2022</td><td>29,625</td></tr>
+        <tr><td>2023</td><td>32,105</td></tr>
+        <tr><td>2024</td><td>35,288</td></tr>
+        <tr><td>2025</td><td>35,388</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>These count worksites with payroll. A one person business with no employees does not appear, and in the trades there are a great many of them.</p>
+
+    <h2>Method</h2>
+
+    <p>Two geographies, kept separate. The Boise metro area is Ada, Boise, Canyon, Gem and Owyhee counties, which is how the Census Bureau publishes firm data. The Treasure Valley core is Ada and Canyon counties, which is how the Bureau of Labor Statistics publishes establishment data, and is the area Swabian buys in. The two are never added together.</p>
+
+    <p>Every number on this page is published by a federal statistical agency. Nothing is modelled, and no owner age is inferred from any record. The verification sheet recomputes each headline figure from the downloaded files by a separate route, and the dataset carries the source and retrieval time for every row.</p>
+
+    <h2>Limitations</h2>
+
+    <ul>
+      <li>Firm age is the age of a firm's oldest establishment, so a long trading company that reorganised may read as younger than it is.</li>
+      <li>Left censored firms were already trading in 1978, so their true age is at least 45 years and is unknown beyond that.</li>
+      <li>Establishment counts exclude businesses without payroll.</li>
+      <li>Census and BLS publish on different schedules, so the two halves of this page carry different reference years, marked on each table.</li>
+    </ul>
+
+    <h2>External estimates we could not verify</h2>
+
+    <p>A figure circulates locally that about 7,000 Idaho businesses close or change ownership every year, attributed to an Idaho Department of Labor survey. A full text reading of that survey contains neither that number nor any ownership change statistic. It is not used here, and it is not repeated here as fact.</p>
+
+    <h2>Using this</h2>
+
+    <p>Cite as: Swabian Acquisition, Treasure Valley Business Succession Index, 2026Q3. The dataset and the verification sheet are published beside this page. Corrections are made within two business days and logged with the old and new values.</p>
+
+    <p>Swabian Acquisition is a buyer of Treasure Valley businesses. This page is published because the numbers were not available anywhere else, not as a solicitation.</p>
+
+    <h2>The data</h2>
+    <ul>
+      <li><a href={dataUrl}>Download the dataset ({edition}, CSV)</a></li>
+      <li><a href={`/succession-index/${edition}/CHECKS.md`}>Verification sheet</a></li>
+    </ul>
+  </div>
+</Base>

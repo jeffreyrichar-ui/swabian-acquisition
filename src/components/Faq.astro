@@ -1,0 +1,19 @@
+---
+/**
+ * The visible answers and the FAQPage schema read the same entries, so schema
+ * can never describe an answer that is not on the page.
+ */
+interface Props { items: { question: string; answer: string }[]; heading?: string }
+const { items, heading = "Questions people ask" } = Astro.props;
+---
+{items?.length > 0 && (
+  <section aria-labelledby="faq-heading">
+    <h2 id="faq-heading">{heading}</h2>
+    {items.map((item) => (
+      <>
+        <h3>{item.question}</h3>
+        <p>{item.answer}</p>
+      </>
+    ))}
+  </section>
+)}

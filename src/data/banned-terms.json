@@ -1,0 +1,48 @@
+{
+  "note": "Mirror of ops/voice.yaml for the site build. The ops repo is the source of truth. Terms in wordBoundary are matched as whole words, because they appear inside legitimate trade vocabulary such as journeyman.",
+  "caseSensitive": [
+    "ETA",
+    "SMB",
+    "LOI",
+    "SBA"
+  ],
+  "terms": [
+    "thesis",
+    "mandate",
+    "platform",
+    "PE-backed",
+    "search fund",
+    "searcher",
+    "entrepreneurship through acquisition",
+    "deal flow",
+    "proprietary",
+    "synergies",
+    "unlock",
+    "seamless",
+    "best-in-class",
+    "world-class",
+    "cutting-edge",
+    "robust",
+    "holistic",
+    "empower",
+    "elevate",
+    "passionate",
+    "in today's landscape",
+    "delve",
+    "tapestry",
+    "committed capital",
+    "proof of funds",
+    "funds available",
+    "fully funded",
+    "personal capital",
+    "our investors",
+    "capital partners",
+    "I will run the company",
+    "I will run it",
+    "on-site running"
+  ],
+  "wordBoundary": [
+    "journey",
+    "journeys"
+  ]
+}

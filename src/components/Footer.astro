@@ -1,0 +1,22 @@
+---
+import { footerPages } from "@/data/pages";
+import { entity, phoneHref, mailHref } from "@/lib/entity";
+const year = new Date().getFullYear();
+---
+<footer class="site">
+  <div class="wrap cols">
+    <div>
+      <p><strong>{entity.name}</strong><br />
+        {entity.address.locality}, {entity.address.region}<br />
+        <a href={mailHref}>{entity.contact.email}</a><br />
+        <a href={phoneHref}>{entity.contact.telephone_display}</a>
+      </p>
+    </div>
+    <div>
+      <ul>
+        {footerPages().map((p) => <li><a href={p.path}>{p.title}</a></li>)}
+      </ul>
+      <p><small>{entity.name} buys established businesses in the Treasure Valley and southwest Idaho. Copyright {year}.</small></p>
+    </div>
+  </div>
+</footer>

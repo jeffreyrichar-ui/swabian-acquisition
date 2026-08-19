@@ -1,0 +1,32 @@
+---
+import Page from "@/layouts/Page.astro";
+import { getCollection } from "astro:content";
+const posts = (await getCollection("posts", ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const fmt = (d: Date) => d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+---
+<Page pageKey="insights">
+  <p class="answer">
+    Plain writing about selling a business in the Treasure Valley: what companies here
+    actually sell for, how the licences and the paperwork really work, and who has been
+    buying local companies. Every piece carries at least one number you cannot find
+    anywhere else, with the source next to it.
+  </p>
+
+  {posts.length === 0 ? (
+    <p>The first pieces are being written now. If you want one on a particular question,
+       write and ask.</p>
+  ) : (
+    <ul class="post-list">
+      {posts.map((post) => (
+        <li>
+          <h2><a href={`/insights/${post.id}/`}>{post.data.title}</a></h2>
+          <p>{post.data.description}</p>
+          <time datetime={post.data.pubDate.toISOString().slice(0, 10)}>
+            {fmt(post.data.pubDate)}
+          </time>
+        </li>
+      ))}
+    </ul>
+  )}
+</Page>

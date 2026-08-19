@@ -1,0 +1,18 @@
+---
+import { navPages } from "@/data/pages";
+import { entity } from "@/lib/entity";
+import ShieldMark from "./ShieldMark.astro";
+const here = Astro.url.pathname;
+---
+<header class="site">
+  <div class="wrap bar">
+    <a class="brand" href="/"><ShieldMark /> {entity.name}</a>
+    <nav class="site" aria-label="Main">
+      <ul>
+        {navPages().map((p) => (
+          <li><a href={p.path} aria-current={here === p.path ? "page" : undefined}>{p.title}</a></li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>

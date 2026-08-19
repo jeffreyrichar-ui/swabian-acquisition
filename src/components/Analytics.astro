@@ -1,0 +1,25 @@
+---
+/**
+ * Cookieless analytics, production builds only, and only once an account
+ * exists. The script path is site specific and comes from data/entity.yaml, so
+ * it is never typed into a component.
+ */
+import { entity } from "@/lib/entity";
+const analytics = entity.analytics ?? {};
+const scriptUrl = analytics.script_url;
+const live = import.meta.env.PROD && analytics.provider === "plausible" && !!scriptUrl;
+---
+{live && (
+  <>
+    <script is:inline async src={scriptUrl}></script>
+    <script is:inline>
+      window.plausible = window.plausible || function () {
+        (window.plausible.q = window.plausible.q || []).push(arguments);
+      };
+      window.plausible.init = window.plausible.init || function (i) {
+        window.plausible.o = i || {};
+      };
+      window.plausible.init();
+    </script>
+  </>
+)}
