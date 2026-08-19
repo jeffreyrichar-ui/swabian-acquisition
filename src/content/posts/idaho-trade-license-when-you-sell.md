@@ -1,17 +1,25 @@
 ---
-title: "Your Idaho contractor licence when you sell"
-description: "Idaho plumbing, HVAC and electrical contractor licences are personal and do not transfer with the business. Here is what that means for a sale."
+title: Your Idaho contractor licence when you sell
+description: Idaho plumbing, HVAC and electrical contractor licences are personal
+  and do not transfer with the business. Here is what that means for a sale.
 pubDate: 2026-08-18
 cluster: seller
-tags: ["licensing", "hvac", "plumbing", "electrical"]
+tags:
+- licensing
+- hvac
+- plumbing
+- electrical
 sources:
-  - "https://legislature.idaho.gov/statutesrules/idstat/Title54/T54CH26/SECT54-2610/"
-  - "https://legislature.idaho.gov/statutesrules/idstat/Title54/T54CH50/SECT54-5008/"
-  - "https://legislature.idaho.gov/statutesrules/idstat/Title54/T54CH10/SECT54-1003/"
-  - "https://legislature.idaho.gov/statutesrules/idstat/Title63/T63CH36/SECT63-3628/"
-  - "https://data.bls.gov/cew/data/api/2024/a/area/16001.csv"
-targetQuery: "Who buys businesses like mine in Boise?"
-draft: true
+- https://legislature.idaho.gov/statutesrules/idstat/Title54/T54CH26/SECT54-2610/
+- https://legislature.idaho.gov/statutesrules/idstat/Title54/T54CH50/SECT54-5008/
+- https://legislature.idaho.gov/statutesrules/idstat/Title54/T54CH10/SECT54-1003/
+- https://legislature.idaho.gov/statutesrules/idstat/Title63/T63CH36/SECT63-3628/
+- https://data.bls.gov/cew/data/api/2024/a/area/16001.csv
+- https://data.bls.gov/cew/data/api/2024/a/area/16027.csv
+- https://data.bls.gov/cew/data/api/2019/a/area/16001.csv
+targetQuery: Who buys businesses like mine in Boise?
+draft: false
+updatedDate: '2026-08-19'
 ---
 
 Your Idaho contractor licence does not transfer with your business. Plumbing,
@@ -67,10 +75,10 @@ and why it is not a sign of mistrust.
 ## How many businesses does this touch here?
 
 More than most people guess. In 2024 Ada and Canyon counties had 422 plumbing
-and heating contractor establishments [fact:F001], 358 electrical contractor
-establishments [fact:F002], and 642 landscaping establishments [fact:F003],
+and heating contractor establishments, 358 electrical contractor
+establishments, and 642 landscaping establishments,
 counting only employers with payroll. Ada County alone went from 172 plumbing and heating establishments in
-2019 to 259 in 2024 [fact:F004], a rise of about half in five years.
+2019 to 259 in 2024, a rise of about half in five years.
 
 Most of those are owned by one person. When that person retires, the licence
 retires with them unless somebody planned otherwise.
