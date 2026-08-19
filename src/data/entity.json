@@ -8,7 +8,7 @@
   "founding_date": "[[TBD]]",
   "url": "https://swabian.co",
   "title_pattern": "{page} | Swabian Acquisition",
-  "home_title": "Swabian Acquisition | Buying a Treasure Valley business",
+  "home_title": "Swabian Acquisition | Buying a Boise business",
   "contact": {
     "email": "jeffrey.richardson@swabian.co",
     "telephone": "+1-208-890-4649",
@@ -137,7 +137,7 @@
     "Licensed trades"
   ],
   "criteria": {
-    "geography": "the Treasure Valley and southwest Idaho",
+    "geography": "Boise, the Treasure Valley and southwest Idaho",
     "revenue_min_usd": 1000000,
     "revenue_max_usd": null,
     "preferred": "B2B and commercial services",

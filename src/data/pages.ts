@@ -20,10 +20,10 @@ export interface PageDef {
 export const PAGES = {
   home: {
     path: "/",
-    title: "Buying a Treasure Valley business",
+    title: "Buying a Boise business",
     description:
-      "Jeff Richardson buys an established Treasure Valley business with at least $1 million in revenue. Boise based, direct, no brokers.",
-    h1: "I want to buy an established business in the Treasure Valley.",
+      "Jeff Richardson buys an established Boise business with at least $1 million in revenue. Boise based, direct, no brokers.",
+    h1: "I want to buy an established business in Boise.",
     schemaType: "WebPage",
     nav: false,
     footer: false,
@@ -42,10 +42,10 @@ export const PAGES = {
   },
   "what-we-buy": {
     path: "/what-we-buy/",
-    title: "What we buy",
+    title: "What we buy in Boise",
     description:
-      "The buy box: Ada and Canyon counties, $1 million or more in revenue, B2B and commercial services, five or more years operating.",
-    h1: "What we buy, and what we do not",
+      "What we buy in Boise and the Treasure Valley: $1 million or more in revenue, B2B and commercial services, five or more years operating.",
+    h1: "What we buy in Boise, and what we do not",
     schemaType: "WebPage",
     nav: true,
     footer: true,
@@ -54,10 +54,10 @@ export const PAGES = {
   },
   "for-owners": {
     path: "/for-owners/",
-    title: "For owners",
+    title: "For Boise business owners",
     description:
-      "Selling your Treasure Valley business: confidentiality, timeline, your employees, the company name, and your own role after close.",
-    h1: "If you are thinking about selling",
+      "Selling your Boise business: confidentiality, timeline, your employees, the company name, and your own role after close.",
+    h1: "If you are thinking about selling your Boise business",
     schemaType: "WebPage",
     nav: true,
     footer: true,
@@ -66,10 +66,10 @@ export const PAGES = {
   },
   "for-advisors": {
     path: "/for-advisors/",
-    title: "For advisors",
+    title: "For advisors in Boise",
     description:
-      "For CPAs, attorneys, bankers and wealth advisors in the Treasure Valley: what we buy and how to make an introduction cleanly.",
-    h1: "For CPAs, attorneys, bankers and wealth advisors",
+      "For CPAs, attorneys, bankers and wealth advisors in Boise: what we buy and how to make an introduction cleanly.",
+    h1: "For Boise CPAs, attorneys, bankers and wealth advisors",
     schemaType: "WebPage",
     nav: true,
     footer: true,
@@ -80,7 +80,7 @@ export const PAGES = {
     path: "/process/",
     title: "Process",
     description:
-      "From the first call to closing: what happens at each step, how long it takes, and what you are asked for and when.",
+      "Selling a Boise business, from the first call to closing: what happens at each step, how long it takes, and what you are asked for.",
     h1: "From the first call to closing",
     schemaType: "WebPage",
     nav: true,
@@ -91,7 +91,7 @@ export const PAGES = {
     path: "/contact/",
     title: "Contact",
     description:
-      "Reach Jeff Richardson directly by phone or email about selling your Treasure Valley business. Confidential, no obligation.",
+      "Reach Jeff Richardson directly by phone or email about selling your Boise business. Confidential, no obligation.",
     h1: "Get in touch",
     schemaType: "ContactPage",
     nav: true,
@@ -102,7 +102,7 @@ export const PAGES = {
     path: "/succession-index/",
     title: "Succession Index",
     description:
-      "How old Treasure Valley businesses are, how many stop having employees each year, and how many establishments there are by trade.",
+      "How old Boise metro businesses are, how many stop having employees each year, and how many establishments there are by trade.",
     h1: "Treasure Valley Business Succession Index",
     schemaType: "WebPage",
     nav: true,
@@ -113,7 +113,7 @@ export const PAGES = {
     path: "/insights/",
     title: "Insights",
     description:
-      "Plain writing on selling a business in the Treasure Valley: what companies sell for, how deals work, and who is buying here.",
+      "Plain writing on selling a business in Boise and the Treasure Valley: what companies sell for, how deals work, and who is buying here.",
     h1: "Insights",
     schemaType: "CollectionPage",
     nav: true,
