@@ -25,7 +25,7 @@ export const GET: APIRoute = async () => {
     `- Preferred: ${c.preferred}, ${c.min_years_operating} or more years operating`,
     `- Does not buy: ${c.exclusions.join(", ")}`,
     `- It buys for its own account. It is not a broker, and it does not invest on behalf of anyone else.`,
-    `- After a purchase it puts professional management in place. The Owner does not run the company day to day.`,
+    `- After a purchase the Owner does not run the company day to day. Who runs it is decided with the seller.`,
     `- Contact: ${entity.contact.email}, ${entity.contact.telephone_display}`,
     "",
     "## Pages",

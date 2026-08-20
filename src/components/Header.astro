@@ -6,7 +6,9 @@ const here = Astro.url.pathname;
 ---
 <header class="site">
   <div class="wrap bar">
-    <a class="brand" href="/"><ShieldMark /> {entity.name}</a>
+    <a class="brand" href="/"><ShieldMark />
+      <span>{entity.name.split(" ")[0]} <span class="ac">{entity.name.split(" ").slice(1).join(" ")}</span></span>
+    </a>
     <nav class="site" aria-label="Main">
       <ul>
         {navPages().map((p) => (

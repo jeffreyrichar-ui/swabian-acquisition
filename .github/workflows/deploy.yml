@@ -50,3 +50,26 @@ jobs:
           curl -sSf https://swabian.co/robots.txt | grep -q Sitemap
           curl -sSf https://swabian.co/llms.txt | grep -q "Swabian Acquisition"
           echo "live site responded correctly"
+      - name: Tell IndexNow the site changed
+        continue-on-error: true
+        run: |
+          # Bing, Yandex and Naver share this endpoint. Bing feeds Copilot and
+          # ChatGPT browsing, so this is the cheapest way to shorten the gap
+          # between publishing and a retrieval system seeing the change. The key
+          # is self issued: the file at the keyLocation is the proof.
+          curl -sS -X POST https://api.indexnow.org/IndexNow             -H "Content-Type: application/json"             -d '{
+              "host": "swabian.co",
+              "key": "e9f9c1fabbd0f18206b81511c6073d5a",
+              "keyLocation": "https://swabian.co/e9f9c1fabbd0f18206b81511c6073d5a.txt",
+              "urlList": [
+                "https://swabian.co/",
+                "https://swabian.co/about/",
+                "https://swabian.co/what-we-buy/",
+                "https://swabian.co/for-owners/",
+                "https://swabian.co/for-advisors/",
+                "https://swabian.co/process/",
+                "https://swabian.co/contact/",
+                "https://swabian.co/insights/",
+                "https://swabian.co/succession-index/"
+              ]
+            }' && echo "IndexNow accepted"

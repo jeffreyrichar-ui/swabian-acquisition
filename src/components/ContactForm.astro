@@ -18,6 +18,13 @@ const endpoint = entity.contact.form.endpoint;
       Email or phone, whichever you prefer
       <input type="text" name="reply_to" required autocomplete="email" />
     </label>
+    <fieldset class="timing">
+      <legend>Where are you in your thinking?</legend>
+      <label class="radio"><input type="radio" name="timing" value="just exploring" checked /> Just exploring</label>
+      <label class="radio"><input type="radio" name="timing" value="more than a year out" /> More than a year out</label>
+      <label class="radio"><input type="radio" name="timing" value="within a year" /> Within a year</label>
+      <label class="radio"><input type="radio" name="timing" value="ready now" /> Ready now</label>
+    </fieldset>
     <label>
       What would you like to talk about?
       <textarea name="message" required minlength="20"></textarea>

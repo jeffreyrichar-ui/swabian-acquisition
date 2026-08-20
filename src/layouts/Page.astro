@@ -32,7 +32,7 @@ const nodes = graph([
         <div class="wrap hero-grid">
           <div class="hero-copy">
             <p class="eyebrow">Boise, Idaho</p>
-            <h1>{page.h1}</h1>
+            <h1 set:html={page.h1.replace("established", '<span class="it">established</span>')} />
             <slot name="answer" />
             <p class="hero-actions">
               <a class="cta" href={`tel:${entity.contact.telephone}`}>Call {entity.contact.telephone_display}</a>

@@ -1,48 +1,236 @@
 ---
+/**
+ * Homepage. Styles here are scoped by Astro, so this redesign touches this page
+ * and nothing else on the site.
+ */
 import Page from "@/layouts/Page.astro";
-import { entity } from "@/lib/entity";
+import ShieldMark from "@/components/ShieldMark.astro";
+import { entity, mailHref, phoneHref } from "@/lib/entity";
+
+const criteria = [
+  ["Where", "Boise first, then the rest of the Treasure Valley: Meridian, Nampa, Eagle, Caldwell, Kuna, Star and Garden City. Also the wider southwest of Idaho."],
+  ["Size", "$1 million or more in annual revenue. No upper limit."],
+  ["Type", "B2B and commercial services preferred."],
+  ["Age", "Five or more years in business."],
+  ["Not buying", "Restaurants, retail, franchises, startups, turnarounds, businesses whose value is mostly real estate."],
+];
+
+const contrasts = [
+  ["You know who is buying", "My name is on the letter and I live in Boise. You deal with me from the first call to the closing table, not an associate, and not a group that changes every quarter."],
+  ["A fund has a model", "Your company has to fit it. I am not fitting your company into a model, so I can fit the purchase to your company."],
+  ["A competitor wants the parts", "Usually your customer list and your best technicians, and not much else. I want the whole business, name included, running the way it runs."],
+  ["Big buyers set the terms", "Who runs it, how fast you leave, when you get paid. I treat those as decisions we make together."],
+];
+
+const decisions = [
+  "Who runs the company day to day",
+  "Your timeline for stepping back, whether that is months or years",
+  "Which employees and key people are staying, and on what terms",
+  "Whether the company keeps its name, and my default is yes",
+  "Your own role after close, from a clean exit to a long advisory seat",
+  "How and when you get paid",
+];
 ---
 <Page pageKey="home">
   <p class="answer" slot="answer">I am Jeff Richardson, Owner of {entity.name} in Boise, Idaho. I want to buy an established business in Boise or the Treasure Valley with $1 million or more in annual revenue, preferably a B2B or commercial services company operating five or more years. If you own one and are thinking about selling, call me at {entity.contact.telephone_display}.</p>
 
-<h2>What I am looking for</h2>
-<div class="scroll-x">
-  <table>
-    <thead><tr><th>Criterion</th><th>Detail</th></tr></thead>
-    <tbody>
-    <tr><td>Where</td><td>Boise first, then the rest of the Treasure Valley: Meridian, Nampa, Eagle, Caldwell, Kuna, Star and Garden City. Also the wider southwest of Idaho: Ada, Canyon, Gem, Payette, Owyhee, Boise, Elmore and Washington counties</td></tr>
-    <tr><td>Size</td><td>$1 million or more in annual revenue. No upper limit.</td></tr>
-    <tr><td>Type</td><td>B2B and commercial services preferred</td></tr>
-    <tr><td>Age</td><td>5 or more years in business</td></tr>
-    <tr><td>Not buying</td><td>Restaurants, retail, franchises, startups, turnarounds, businesses whose value is mostly real estate</td></tr>
-    </tbody>
-  </table>
-</div>
-<p>If that describes your company, the rest of this page is for you. If you are close but not sure, the <a href="/what-we-buy/">what we buy</a> page covers the edges.</p>
-<h2>Who is buying?</h2>
-<p>Me. My name is Jeff Richardson. I live in Boise, and {entity.name} is my company. It exists to buy a good business in Boise and own it for a long time. Not a fund, not a broker, not a firm that buys to consolidate. Whatever I buy, I keep. I have spent several years studying Boise and Treasure Valley businesses.</p>
-<p>I have an MBA from Kellogg, worked in financial analytics at ServiceLink, part of Fidelity National Financial, and did strategy consulting at EY. That background means I can read your books and get to a fair number without wasting your time. It does not mean I plan to sit in your chair on Monday morning. After close I put professional management in place: your existing team, a manager we hire, or someone you help choose. My job is to be a good owner.</p>
-<h2>Why sell to a named local buyer instead of a fund or a competitor?</h2>
-<p>Between 2021 and 2026, at least eight long-time Boise area HVAC and plumbing firms were sold to out-of-state private equity buyers [BoiseDev, Aug 2025; Arthur Berry & Co., May 2026]. For some owners that was the right call. It is not the only option, and it is not the one I am offering.</p>
-<ul>
-  <li><strong>You know who is buying.</strong> My name is on the letter and I live in Boise. You deal with me from the first call to the closing table, not an associate, and not a group that changes every quarter.</li>
-  <li><strong>A fund has a model, and your company has to fit it.</strong> I am not fitting your company into a model, so I can fit the purchase to your company.</li>
-  <li><strong>A competitor often wants your customer list and your best technicians, and not much else.</strong> I want the whole business, name included, running the way it runs.</li>
-  <li><strong>Big buyers usually set the terms:</strong> who runs it, how fast you leave, when you get paid. I treat those as decisions we make together.</li>
-</ul>
-<h2>What happens to your company after you sell?</h2>
-<p>I put professional management in place: your existing team, a manager we hire, or someone you help choose. Before we sign anything, we agree on the things owners usually care most about:</p>
-<ul>
-  <li>Who runs the company day to day</li>
-  <li>Your timeline for stepping back, whether that is months or years</li>
-  <li>Which employees and key people are staying, and on what terms</li>
-  <li>Whether the company keeps its name (my default is yes)</li>
-  <li>Your own role after close, anywhere from a clean exit to a long advisory seat</li>
-  <li>How and when you get paid, including structures that fit your tax and retirement plans</li>
-</ul>
-<p>None of these are promises I can make on a website. They are options, and we decide them together and put them in writing.</p>
-<h2>How do you start?</h2>
-<p>Call me at {entity.contact.telephone_display} or email {entity.contact.email}. The first conversation is 30 minutes, confidential, and needs no documents. If your business is not a fit, I will say so on that call and try to point you toward someone better suited.</p>
-<p>If you would rather write, the <a href="/contact/">contact page</a> has a form with three fields. This offer does not expire. If you are thinking about selling this year, next year, or in five years, I would like to know you. When both sides are ready, I aim for a quick, professional closing within 90 days.</p>
-<p>If you are a CPA, attorney, banker, or wealth advisor with a client who might fit, the <a href="/for-advisors/">for advisors</a> page is for you.</p>
+  <section class="band">
+    <h2>What I am looking for</h2>
+    <dl class="criteria-list">
+      {criteria.map(([term, detail]) => (
+        <div class="criterion">
+          <dt>{term}</dt>
+          <dd>{detail}</dd>
+        </div>
+      ))}
+    </dl>
+    <p class="aside">
+      If that describes your company, the rest of this page is for you. If you are close
+      but not sure, <a href="/what-we-buy/">what we buy</a> covers the edges.
+    </p>
+  </section>
+
+  <section>
+    <h2>Who is buying?</h2>
+    <p class="lede">Me. My name is Jeff Richardson, I live in Boise, and {entity.name} is my company.</p>
+    <p>
+      It exists to buy a good business in Boise and own it for a long time. Not a fund,
+      not a broker, not a firm that buys to consolidate. Whatever I buy, I keep. I have
+      spent several years studying Boise and Treasure Valley businesses.
+    </p>
+    <p>
+      I have an MBA from Kellogg, worked in financial analytics at ServiceLink, part of
+      Fidelity National Financial, and did strategy consulting at EY. That background
+      means I can read your books and get to a fair number without wasting your time.
+    </p>
+    <blockquote>
+      It does not mean I plan to sit in your chair on Monday morning. I am the owner, not
+      the operator. Who runs the company day to day is one of the first things you and I
+      work out, and it is your business that decides it, not a rule of mine.
+    </blockquote>
+  </section>
+
+  <section>
+    <h2>Why sell to a named local buyer instead of a fund or a competitor?</h2>
+    <p>
+      Between 2021 and 2026, at least eight long-time Boise area heating and plumbing
+      firms were sold to out-of-state private equity buyers. For some owners that was the
+      right call. It is not the only option, and it is not the one I am offering.
+    </p>
+    <div class="cards">
+      {contrasts.map(([head, body]) => (
+        <div class="card">
+          <h3>{head}</h3>
+          <p>{body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section>
+    <h2>What happens to your company after you sell?</h2>
+    <p>
+      Before we sign anything, we agree on the things owners usually care most about:
+    </p>
+    <ul class="decisions">
+      {decisions.map((d) => <li>{d}</li>)}
+    </ul>
+    <p class="aside">
+      None of these are promises I can make on a website. They are options. We decide
+      them together and put them in writing.
+    </p>
+  </section>
+
+  <section class="closing">
+    <ShieldMark width={30} />
+    <h2>How do you start?</h2>
+    <p>
+      One conversation. Thirty minutes, confidential, no documents. If your business is
+      not a fit I will say so on that call and try to point you somewhere better suited.
+    </p>
+    <p class="actions">
+      <a class="call" href={phoneHref}>{entity.contact.telephone_display}</a>
+      <a class="mail" href={mailHref}>{entity.contact.email}</a>
+    </p>
+    <p class="fine">
+      This offer does not expire. Thinking about selling this year, next year, or in five
+      years, I would like to know you. When both sides are ready, I aim for a quick,
+      professional closing within 90 days. If you are a CPA, attorney, banker or wealth
+      advisor with a client who might fit, <a href="/for-advisors/">start here</a>.
+    </p>
+  </section>
 </Page>
+
+<style>
+  section { margin-top: 3.5rem; }
+  section > h2 { margin-top: 0; }
+
+  .lede { font-size: 1.15em; }
+
+  /* The buy box is the first thing a qualifying owner looks for, so it gets a
+     panel of its own rather than sitting in the flow as another table. */
+  .band {
+    max-width: 46rem;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--rust-light);
+    padding: 1.6rem 1.7rem 1.8rem;
+  }
+  .criteria-list { margin: 1.2rem 0 0; }
+  .criterion {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: 0 1.4rem;
+    padding: 0.75rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .criterion:first-child { border-top: 0; padding-top: 0; }
+  .criterion dt {
+    font-family: var(--serif);
+    font-size: 1.02rem;
+    color: var(--rust);
+  }
+  .criterion dd { margin: 0; max-width: none; }
+
+  @media (max-width: 34rem) {
+    .criterion { grid-template-columns: 1fr; gap: 0.15rem; }
+  }
+
+  blockquote {
+    margin: 1.6rem 0 0;
+    padding: 1.1rem 1.3rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-left: 3px solid var(--rust-light);
+    font-size: 1.05em;
+  }
+  blockquote p { margin: 0; }
+
+  /* Four contrasts read as four things, not as one long list. */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .card {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid var(--line);
+    padding: 1.1rem 1.2rem 1.25rem;
+  }
+  .card h3 {
+    margin: 0 0 0.4rem;
+    font-size: 1.05rem;
+    color: var(--rust);
+  }
+  .card p { margin: 0; font-size: 0.98em; max-width: none; }
+
+  .decisions { list-style: none; padding: 0; margin-top: 1.2rem; }
+  .decisions li {
+    position: relative;
+    padding: 0.55rem 0 0.55rem 1.7rem;
+    border-top: 1px solid var(--line);
+    max-width: none;
+  }
+  .decisions li:first-child { border-top: 0; }
+  .decisions li::before {
+    content: "";
+    position: absolute;
+    left: 0.25rem;
+    top: 1.15rem;
+    width: 0.45rem;
+    height: 0.45rem;
+    border-right: 1.5px solid var(--rust-light);
+    border-bottom: 1.5px solid var(--rust-light);
+    transform: rotate(-45deg);
+  }
+
+  .aside { color: var(--muted); font-size: 0.97em; }
+
+  /* The page needs an ending. Ink on cream inverts, which gives the eye a place
+     to stop and puts the phone number where it cannot be missed. */
+  .closing {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 2.2rem 2rem 2.4rem;
+    margin-top: 4rem;
+  }
+  .closing h2 { color: var(--cream); border-top: 0; padding-top: 0; margin-top: 0.8rem; }
+  .closing p { color: rgba(237, 230, 214, 0.86); max-width: 34rem; }
+  .closing :global(svg path) { stroke: var(--cream); }
+  .closing :global(svg path:nth-child(2)) { stroke: var(--rust-light); }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.5rem; }
+  .actions a {
+    display: inline-block;
+    padding: 0.75rem 1.35rem;
+    text-decoration: none;
+    font-size: 1.02rem;
+  }
+  .actions .call { background: var(--rust-light); color: var(--cream); }
+  .actions .call:hover { background: var(--cream); color: var(--ink); }
+  .actions .mail { border: 1px solid rgba(237, 230, 214, 0.45); color: var(--cream); }
+  .actions .mail:hover { background: rgba(237, 230, 214, 0.12); }
+
+  .fine { font-size: 0.94em; margin-top: 1.6rem; }
+  .fine a { color: var(--cream); }
+</style>

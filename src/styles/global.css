@@ -1,11 +1,19 @@
-/* Fraunces, the serif from the previous site, self hosted so there is no request
-   to Google and no third party in the critical path. One instance, latin subset,
-   about 18 KB. The fallback is metric adjusted so swapping causes no shift. */
+/* Fraunces, lifted from the original swabian.co bundle so the type is the same
+   type, italic included. Both faces are pinned to one optical size and subset to
+   latin: 16 KB roman, 20 KB italic, no request to Google. The original set the
+   display at weight 400, not 600, which is most of why it read as designed. */
 @font-face {
   font-family: "Fraunces";
-  src: url("/fonts/fraunces-600.woff2") format("woff2");
-  font-weight: 600;
+  src: url("/fonts/fraunces-roman.woff2") format("woff2");
+  font-weight: 400;
   font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fraunces";
+  src: url("/fonts/fraunces-it.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
   font-display: swap;
 }
 @font-face {
@@ -17,18 +25,34 @@
   line-gap-override: 0%;
 }
 
-/* Tokens carried over from the previous site so returning visitors recognise it.
-   Rust #B5532B is about 4.2:1 on cream, which is below AA for body text, so it
-   is reserved for rules, marks and large display type. Links use #933F1E. */
+/* Palette carried over from the original site, which named the colours after the
+   place: bone and limestone for paper, granite for ink, oxidised copper for the
+   accent. Copper is about 4.2:1 on bone, so it is for display type, rules and
+   marks. Body links use the darker copper. */
 :root {
-  --cream: #EDE6D6;
+  --bone: #EDE6D6;
+  --bone-2: #E2DAC6;
+  --paper: #F4EFE2;
   --ink: #1A1814;
-  --rust: #933F1E;
-  --rust-light: #B5532B;
-  --muted: #5C564E;
-  --line: rgba(26, 24, 20, 0.15);
+  --ink-soft: #4A453C;
+  --ink-mute: #7A7264;
+  --copper: #B5532B;
+  --copper-2: #933F1E;
+  --ochre: #C8924A;
+  --rule: rgba(26, 24, 20, 0.18);
+  --rule-2: rgba(26, 24, 20, 0.10);
+  --rule-d: rgba(237, 230, 214, 0.18);
+
+  /* kept so existing rules keep working */
+  --cream: var(--bone);
+  --rust: var(--copper-2);
+  --rust-light: var(--copper);
+  --muted: var(--ink-mute);
+  --line: var(--rule-2);
+
   --serif: "Fraunces", "Fraunces Fallback", Georgia, "Times New Roman", serif;
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --measure: 40rem;
   --gap: clamp(1.5rem, 4vw, 3rem);
 }
@@ -48,9 +72,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.15; text-wrap: balance; }
-h1 { font-size: clamp(2rem, 5vw, 3.1rem); letter-spacing: -0.01em; }
-h2 { font-size: clamp(1.4rem, 2.6vw, 1.9rem); margin-top: 2.5em; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.05; text-wrap: balance; }
+h1 { font-size: clamp(2.6rem, 6.4vw, 4.6rem); line-height: 0.94; letter-spacing: -0.035em; }
+/* The signature move from the original: one word of the headline set in italic
+   copper. It is the whole reason the type had character. */
+h1 .it, h2 .it { font-style: italic; color: var(--copper-2); }
+h2 { font-size: clamp(1.55rem, 3vw, 2.15rem); letter-spacing: -0.02em; margin-top: 2.5em; }
 h3 { font-size: clamp(1.15rem, 1.6vw, 1.3rem); margin-top: 1.8em; }
 p, ul, ol, table { margin-top: 1em; }
 p, li { max-width: var(--measure); text-wrap: pretty; }
@@ -207,4 +234,74 @@ tbody tr:last-child td { border-bottom: 0; }
 
 /* The body column shares its left edge with the hero rather than centring in a
    narrower box, so the eye follows one line down the page instead of two. */
-.body { width: min(100%, 44rem); margin-inline: 0; }
+/* Prose stays at the reading measure through the p/li rule above, so the body
+   can take the full column and let panels, cards and the closing band use the
+   width. Without this the page ran as a narrow strip with a dead right side. */
+.body { width: 100%; }
+.body h2, .body h3 { max-width: 40rem; }
+
+/* Timing on the contact form. Answering costs one tap and tells Jeff whether a
+   note is a conversation for this month or for 2029. Defaults to "just
+   exploring" so nobody has to declare they are selling to get in touch. */
+.timing { border: 1px solid var(--line); padding: 0.9rem 1.1rem 1rem; margin-top: 1rem; }
+.timing legend { padding: 0 0.4rem; font-size: 0.95rem; }
+.timing .radio { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.4rem; font-size: 1rem; }
+.timing .radio input { width: auto; margin: 0; }
+
+/* ---- Carried over from the original -----------------------------------
+   Three things did most of the work on the old site: a paper grain over the
+   whole page, mono micro labels in copper, and buttons as letterspaced caps on
+   ink. None of them cost a request. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image:
+    radial-gradient(rgba(26, 24, 20, 0.05) 1px, transparent 1px),
+    radial-gradient(rgba(26, 24, 20, 0.04) 1px, transparent 1px);
+  background-size: 3px 3px, 7px 7px;
+  background-position: 0 0, 1px 2px;
+}
+body > * { position: relative; z-index: 2; }
+
+::selection { background: var(--copper); color: var(--bone); }
+
+.eyebrow, .micro {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--copper-2);
+}
+
+.cta, .cta-ghost {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 1.05rem 1.5rem;
+  border: 1px solid var(--ink);
+}
+.cta { background: var(--ink); color: var(--bone); }
+.cta:hover { background: var(--copper-2); border-color: var(--copper-2); color: var(--bone); }
+.cta-ghost { background: transparent; color: var(--ink); border-color: var(--rule); }
+.cta-ghost:hover { background: var(--ink); color: var(--bone); border-color: var(--ink); }
+
+/* The diamond, rotated 45 degrees, used as a section marker on the old site. */
+.diamond {
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  border: 1px solid var(--copper);
+  transform: rotate(45deg);
+}
+
+header.site { border-bottom: 1px solid var(--rule); }
+header.site a.brand { font-weight: 400; letter-spacing: -0.01em; }
+header.site a.brand .ac { font-style: italic; color: var(--copper-2); }
+nav.site a { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; }
