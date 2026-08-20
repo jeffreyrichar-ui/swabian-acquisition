@@ -1,6 +1,7 @@
 ---
 import "@/styles/global.css";
 import SEO from "@/components/SEO.astro";
+import { entity } from "@/lib/entity";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Analytics from "@/components/Analytics.astro";
@@ -16,6 +17,12 @@ const { title, description, canonical, graph, ogType, noindex } = Astro.props;
   <head>
     <SEO {title} {description} {canonical} {ogType} {noindex} />
     {graph && <script type="application/ld+json" set:html={JSON.stringify(graph)} />}
+    {entity.verification?.google && (
+      <meta name="google-site-verification" content={entity.verification.google} />
+    )}
+    {entity.verification?.bing && (
+      <meta name="msvalidate.01" content={entity.verification.bing} />
+    )}
     <Analytics />
   </head>
   <body>
