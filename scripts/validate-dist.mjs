@@ -107,5 +107,16 @@ const home = readFileSync(join(DIST, "index.html"), "utf8");
 for (const t of ['"@type":"Organization"', '"@type":"Person"', '"@type":"WebSite"'])
   if (!home.includes(t)) fail(`home page schema missing ${t}`);
 
+// 6. Whatever is served at / must carry the things that live in the layout.
+//    The deploy can copy another file over the built home page, and that file
+//    silently loses analytics, ownership verification and schema. Each of those
+//    has already been shipped broken once, so they are invariants now.
+if (entity.analytics?.script_url && !home.includes(entity.analytics.script_url))
+  fail("home page does not load the analytics script");
+if (entity.verification?.google && !home.includes(entity.verification.google))
+  fail("home page is missing the Google ownership tag; verification would lapse");
+if (entity.verification?.bing && !home.includes(entity.verification.bing))
+  fail("home page is missing the Bing ownership tag; verification would lapse");
+
 if (bad) { console.error(`\nvalidate-dist failed with ${bad} problem(s)`); process.exit(1); }
 console.log("  all invariants pass");
