@@ -28,6 +28,16 @@ jobs:
         run: npm run check
       - name: Build and validate output
         run: npm run build
+      - name: Serve the previous homepage
+        # Temporary, at Jeff's request while the rebuild is finished. The Astro
+        # homepage still builds and every other page is untouched; this only
+        # replaces what "/" serves. Reverting is deleting this step. The claims
+        # that were removed from this page are listed in the commit that added it.
+        run: |
+          if [ -f legacy-homepage.html ]; then
+            cp legacy-homepage.html dist/index.html
+            echo "homepage: serving legacy-homepage.html"
+          fi
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
