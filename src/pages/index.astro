@@ -32,10 +32,10 @@ const decisions = [
 ];
 ---
 <Page pageKey="home">
-  <p class="answer" slot="answer">I am Jeff Richardson, Owner of {entity.name} in Boise, Idaho. I want to buy an established business in Boise or the Treasure Valley with $1 million or more in annual revenue, preferably a B2B or commercial services company operating five or more years. If you own one and are thinking about selling, call me at {entity.contact.telephone_display}.</p>
+  <p class="answer" slot="answer">That gets decided with you, not announced to you. {entity.name} buys an established business in Boise or the Treasure Valley with $1 million or more in annual revenue and holds it. Not resold, not consolidated. I am Jeff Richardson, the Owner, and you deal with me. Call {entity.contact.telephone_display}.</p>
 
   <section class="band">
-    <h2>What I am looking for</h2>
+    <h2>What Swabian buys</h2>
     <dl class="criteria-list">
       {criteria.map(([term, detail]) => (
         <div class="criterion">
@@ -52,16 +52,16 @@ const decisions = [
 
   <section>
     <h2>Who is buying?</h2>
-    <p class="lede">Me. My name is Jeff Richardson, I live in Boise, and {entity.name} is my company.</p>
+    <p class="lede">{entity.name}, a Boise company. I am Jeff Richardson, its Owner, and I am the person you will be dealing with.</p>
     <p>
-      It exists to buy a good business in Boise and own it for a long time. Not a fund,
-      not a broker, not a firm that buys to consolidate. Whatever I buy, I keep. I have
-      spent several years studying Boise and Treasure Valley businesses.
+      Swabian exists to buy a good business in Boise and own it for a long time. It is not
+      a fund, not a broker, and not a firm that buys to consolidate. What it buys, it keeps.
+      I have spent several years studying Boise and Treasure Valley businesses.
     </p>
     <p>
       I have an MBA from Kellogg, worked in financial analytics at ServiceLink, part of
-      Fidelity National Financial, and did strategy consulting at EY. That background
-      means I can read your books and get to a fair number without wasting your time.
+      Fidelity National Financial, and did strategy consulting at EY. That background means
+      I can read your books and get to a fair number without wasting your time.
     </p>
     <blockquote>
       It does not mean I plan to sit in your chair on Monday morning. I am the owner, not
@@ -88,9 +88,10 @@ const decisions = [
   </section>
 
   <section>
-    <h2>What happens to your company after you sell?</h2>
+    <h2>What actually gets decided, and by whom</h2>
     <p>
-      Before we sign anything, we agree on the things owners usually care most about:
+      Before anything is signed, Swabian and the seller agree on the things owners usually
+      care most about:
     </p>
     <ul class="decisions">
       {decisions.map((d) => <li>{d}</li>)}

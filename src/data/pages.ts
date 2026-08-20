@@ -8,6 +8,7 @@ export type SchemaType = "WebPage" | "AboutPage" | "ContactPage" | "CollectionPa
 export interface PageDef {
   path: string;            // canonical path, always with a trailing slash
   title: string;           // <title> without the brand suffix (home is special)
+  h1Accent?: string;       // the word or phrase set in italic copper inside the h1
   navLabel?: string;       // header link text; falls back to title. Titles carry
                            // the search terms, the nav carries the short word.
   description: string;     // 70 to 160 characters
@@ -22,10 +23,11 @@ export interface PageDef {
 export const PAGES = {
   home: {
     path: "/",
-    title: "Buying a Boise business",
+    title: "Buying your Boise business",
     description:
       "Jeff Richardson buys an established Boise business with at least $1 million in revenue. Boise based, direct, no brokers.",
-    h1: "I want to buy an established business in Boise.",
+    h1: "What happens to your company after you sell?",
+    h1Accent: "your company",
     schemaType: "WebPage",
     nav: false,
     footer: false,
@@ -98,7 +100,7 @@ export const PAGES = {
     path: "/process/",
     title: "Process",
     description:
-      "Selling a Boise business, from the first call to closing: what happens at each step, how long it takes, and what you are asked for.",
+      "Selling your Boise business, from the first call to closing: what happens at each step, how long it takes, and what you are asked for.",
     h1: "From the first call to closing",
     schemaType: "WebPage",
     nav: true,
