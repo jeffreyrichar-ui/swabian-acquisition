@@ -5,7 +5,7 @@
 import { readFileSync, existsSync, readdirSync } from "node:fs";
 
 const src = readFileSync("src/data/pages.ts", "utf8");
-const declared = new Set([...src.matchAll(/^\s{2}"?([a-z-]+)"?:\s*\{/gm)].map((m) => m[1]));
+const declared = new Set([...src.matchAll(/^\s{2}"?([a-z0-9/-]+)"?:\s*\{/gm)].map((m) => m[1]));
 
 const files = readdirSync("src/pages", { recursive: true })
   .filter((f) => String(f).endsWith(".astro"));

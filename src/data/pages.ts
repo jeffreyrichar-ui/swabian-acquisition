@@ -69,6 +69,18 @@ export const PAGES = {
     updated: "2026-08-18",
     faq: "for-owners",
   },
+  "for-advisors/one-page": {
+    path: "/for-advisors/one-page/",
+    title: "A buyer summary you can forward",
+    navLabel: "One page summary",
+    description:
+      "One page an advisor can forward to a client unchanged: who Jeff Richardson is, what he buys in Boise, and what he can and cannot promise before seeing the business.",
+    h1: "Jeff Richardson, Swabian Acquisition",
+    schemaType: "WebPage",
+    nav: false,
+    footer: false,
+    updated: "2026-08-19",
+  },
   "for-advisors": {
     path: "/for-advisors/",
     title: "For advisors in Boise",
