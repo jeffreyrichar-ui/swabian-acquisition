@@ -1,6 +1,7 @@
 ---
 import Base from "./Base.astro";
 import Faq from "@/components/Faq.astro";
+import Topo from "@/components/Topo.astro";
 import { getPage, type PageKey } from "@/data/pages";
 import { entity } from "@/lib/entity";
 import { graph, organization, person, website, webPage, breadcrumbs, faqPage } from "@/lib/schema";
@@ -29,21 +30,17 @@ const nodes = graph([
   {pageKey === "home" ? (
     <>
       <div class="hero">
-        <div class="wrap hero-grid">
+        <div class="wrap hero-inner">
           <div class="hero-copy">
             <p class="eyebrow">Boise, Idaho</p>
-            <h1>{page.h1}</h1>
+            <h1 set:html={page.h1.replace("established", '<span class="it">established</span>')} />
             <slot name="answer" />
             <p class="hero-actions">
               <a class="cta" href={`tel:${entity.contact.telephone}`}>Call {entity.contact.telephone_display}</a>
               <a class="cta-ghost" href="/what-we-buy/">What I buy</a>
             </p>
           </div>
-          <figure class="hero-portrait">
-            <img src="/images/jeffrey-richardson.jpg" width="360" height="450"
-                 alt={`${entity.founder.name}, Owner of ${entity.name}`} fetchpriority="high" />
-            <figcaption>{entity.founder.name}, Owner</figcaption>
-          </figure>
+          <Topo />
         </div>
       </div>
       <div class="wrap">
@@ -56,10 +53,25 @@ const nodes = graph([
   ) : (
     <div class="wrap">
       <div class="body">
+        <p class="eyebrow">{page.navLabel ?? page.title}</p>
         <h1>{page.h1}</h1>
         <slot />
         <Faq items={faqItems} />
       </div>
+    </div>
+  )}
+  {pageKey !== "contact" && (
+    <div class="wrap">
+      <aside class="page-close">
+        <div>
+          <p class="micro">Talk to the buyer</p>
+          <p class="page-close-line">One conversation. Thirty minutes, confidential, no documents.</p>
+        </div>
+        <p class="page-close-actions">
+          <a class="cta" href={`tel:${entity.contact.telephone}`}>{entity.contact.telephone_display}</a>
+          <a class="cta-ghost" href="/contact/">Write instead</a>
+        </p>
+      </aside>
     </div>
   )}
 </Base>

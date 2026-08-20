@@ -28,6 +28,16 @@ jobs:
         run: npm run check
       - name: Build and validate output
         run: npm run build
+      - name: Serve the previous homepage
+        # Temporary, at Jeff's request while the rebuild is finished. The Astro
+        # homepage still builds and every other page is untouched; this only
+        # replaces what "/" serves. Reverting is deleting this step. The claims
+        # that were removed from this page are listed in the commit that added it.
+        run: |
+          if [ -f legacy-homepage.html ]; then
+            cp legacy-homepage.html dist/index.html
+            echo "homepage: serving legacy-homepage.html"
+          fi
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
@@ -50,3 +60,26 @@ jobs:
           curl -sSf https://swabian.co/robots.txt | grep -q Sitemap
           curl -sSf https://swabian.co/llms.txt | grep -q "Swabian Acquisition"
           echo "live site responded correctly"
+      - name: Tell IndexNow the site changed
+        continue-on-error: true
+        run: |
+          # Bing, Yandex and Naver share this endpoint. Bing feeds Copilot and
+          # ChatGPT browsing, so this is the cheapest way to shorten the gap
+          # between publishing and a retrieval system seeing the change. The key
+          # is self issued: the file at the keyLocation is the proof.
+          curl -sS -X POST https://api.indexnow.org/IndexNow             -H "Content-Type: application/json"             -d '{
+              "host": "swabian.co",
+              "key": "e9f9c1fabbd0f18206b81511c6073d5a",
+              "keyLocation": "https://swabian.co/e9f9c1fabbd0f18206b81511c6073d5a.txt",
+              "urlList": [
+                "https://swabian.co/",
+                "https://swabian.co/about/",
+                "https://swabian.co/what-we-buy/",
+                "https://swabian.co/for-owners/",
+                "https://swabian.co/for-advisors/",
+                "https://swabian.co/process/",
+                "https://swabian.co/contact/",
+                "https://swabian.co/insights/",
+                "https://swabian.co/succession-index/"
+              ]
+            }' && echo "IndexNow accepted"

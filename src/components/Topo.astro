@@ -1,0 +1,124 @@
+---
+/**
+ * Topographic contour band, taken from the original swabian.co. A quad sheet
+ * centred on Boise: 43.6 N, 116.2 W. It is decoration, so it is hidden from
+ * assistive technology and costs no request.
+ */
+---
+<figure class="topo" aria-hidden="true">
+  <span class="topo-label">quad sheet &middot; 7.5' series &middot; CI 200 ft</span>
+  <span class="topo-coord">N 43.6&deg; &middot; W 116.2&deg;</span>
+  <svg viewBox="0 0 1280 220" preserveAspectRatio="none">
+        <defs>
+          <pattern id="topo-grid" x="0" y="0" width="80" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 80 0 L 0 0 0 40" fill="none" stroke="#1A1814" stroke-opacity="0.06" stroke-width="0.5"></path>
+          </pattern>
+        </defs>
+        <rect width="1280" height="220" fill="url(#topo-grid)"></rect>
+  
+        <!-- Frame with corner ticks -->
+        <g stroke="#1A1814" stroke-opacity="0.45" stroke-width="0.6" fill="none">
+          <line x1="0" y1="0" x2="40" y2="0"></line><line x1="0" y1="0" x2="0" y2="40"></line>
+          <line x1="1280" y1="0" x2="1240" y2="0"></line><line x1="1280" y1="0" x2="1280" y2="40"></line>
+          <line x1="0" y1="220" x2="40" y2="220"></line><line x1="0" y1="220" x2="0" y2="180"></line>
+          <line x1="1280" y1="220" x2="1240" y2="220"></line><line x1="1280" y1="220" x2="1280" y2="180"></line>
+        </g>
+  
+        <!-- Concentric contours , all centered around the summit at (720, 70).
+             Each ring is an ellipse, nested cleanly. Index contours every other
+             ring (heavier). Asymmetric stretch creates a ridge running W-E. -->
+        <g fill="none" stroke="#1A1814" stroke-linejoin="round">
+          <!-- 7400 (outer) -->
+          <ellipse cx="700" cy="170" rx="640" ry="80" stroke-opacity="0.16" stroke-width="0.6"></ellipse>
+          <!-- 7600 -->
+          <ellipse cx="710" cy="155" rx="540" ry="74" stroke-opacity="0.12" stroke-width="0.5"></ellipse>
+          <!-- 7800 -->
+          <ellipse cx="715" cy="142" rx="455" ry="68" stroke-opacity="0.16" stroke-width="0.6"></ellipse>
+          <!-- 8000 (index) -->
+          <ellipse cx="718" cy="130" rx="380" ry="62" stroke-opacity="0.30" stroke-width="0.9"></ellipse>
+          <!-- 8200 -->
+          <ellipse cx="720" cy="118" rx="320" ry="56" stroke-opacity="0.16" stroke-width="0.6"></ellipse>
+          <!-- 8400 -->
+          <ellipse cx="721" cy="108" rx="265" ry="50" stroke-opacity="0.12" stroke-width="0.5"></ellipse>
+          <!-- 8600 -->
+          <ellipse cx="722" cy="100" rx="215" ry="44" stroke-opacity="0.16" stroke-width="0.6"></ellipse>
+          <!-- 8800 -->
+          <ellipse cx="722" cy="93" rx="170" ry="38" stroke-opacity="0.12" stroke-width="0.5"></ellipse>
+          <!-- 9000 (index) -->
+          <ellipse cx="722" cy="86" rx="130" ry="32" stroke-opacity="0.30" stroke-width="0.9"></ellipse>
+          <!-- 9200 -->
+          <ellipse cx="722" cy="80" rx="95" ry="26" stroke-opacity="0.16" stroke-width="0.6"></ellipse>
+          <!-- 9400 -->
+          <ellipse cx="722" cy="76" rx="65" ry="20" stroke-opacity="0.12" stroke-width="0.5"></ellipse>
+          <!-- 9600 -->
+          <ellipse cx="722" cy="73" rx="40" ry="14" stroke-opacity="0.16" stroke-width="0.6"></ellipse>
+          <!-- 9800 (index) -->
+          <ellipse cx="722" cy="71" rx="20" ry="8" stroke-opacity="0.30" stroke-width="0.9"></ellipse>
+        </g>
+  
+        <!-- Index contour labels: clear gap in the line + numeric label -->
+        <g font-family="JetBrains Mono, monospace" font-size="8" fill="#1A1814" fill-opacity="0.55" letter-spacing="1.2">
+          <!-- mask gaps for the labels -->
+          <rect x="335" y="186" width="32" height="10" fill="#EDE6D6"></rect>
+          <text x="338" y="194">7400</text>
+          <rect x="334" y="125" width="32" height="10" fill="#EDE6D6"></rect>
+          <text x="338" y="133">8000</text>
+          <rect x="586" y="81" width="32" height="10" fill="#EDE6D6"></rect>
+          <text x="590" y="89">9000</text>
+        </g>
+  
+        <!-- Drainage line (faint, copper) , descends NW from saddle -->
+        <path d="M722,71 Q610,120 480,160 Q340,196 200,210" fill="none" stroke="#B5532B" stroke-opacity="0.32" stroke-width="0.8" stroke-dasharray="0.5 3" stroke-linecap="round"></path>
+  
+        <!-- Section corner labels -->
+        <g font-family="JetBrains Mono, monospace" font-size="8" fill="#1A1814" fill-opacity="0.45" letter-spacing="1.5">
+          <text x="8" y="14">SEC. 14</text>
+          <text x="1232" y="14">T. 4N</text>
+          <text x="8" y="216">R. 2E</text>
+          <text x="1230" y="216">B.M.</text>
+        </g>
+  
+        <!-- Copper survey marker on summit -->
+        <g>
+          <circle cx="722" cy="71" r="5" fill="#EDE6D6" stroke="#B5532B" stroke-width="1.2"></circle>
+          <circle cx="722" cy="71" r="1.6" fill="#B5532B"></circle>
+          <line x1="722" y1="66" x2="722" y2="40" stroke="#B5532B" stroke-width="0.8"></line>
+          <rect x="694" y="28" width="74" height="12" fill="#EDE6D6"></rect>
+          <text x="700" y="37" font-family="JetBrains Mono, monospace" font-size="9" fill="#B5532B" letter-spacing="1.5">Δ BM 9892</text>
+        </g>
+  
+        <!-- Scale bar -->
+        <g transform="translate(56,200)">
+          <line x1="0" y1="0" x2="160" y2="0" stroke="#1A1814" stroke-opacity="0.7" stroke-width="0.9"></line>
+          <line x1="0" y1="-3" x2="0" y2="3" stroke="#1A1814" stroke-opacity="0.7" stroke-width="0.9"></line>
+          <line x1="80" y1="-2" x2="80" y2="2" stroke="#1A1814" stroke-opacity="0.7" stroke-width="0.7"></line>
+          <line x1="160" y1="-3" x2="160" y2="3" stroke="#1A1814" stroke-opacity="0.7" stroke-width="0.9"></line>
+          <text x="-2" y="14" font-family="JetBrains Mono, monospace" font-size="8" fill="#1A1814" fill-opacity="0.6" letter-spacing="1.2">0</text>
+          <text x="74" y="14" font-family="JetBrains Mono, monospace" font-size="8" fill="#1A1814" fill-opacity="0.6" letter-spacing="1.2">½</text>
+          <text x="150" y="14" font-family="JetBrains Mono, monospace" font-size="8" fill="#1A1814" fill-opacity="0.6" letter-spacing="1.2">1 mi</text>
+        </g>
+  
+        <!-- North arrow -->
+        <g transform="translate(1224,38)">
+          <line x1="0" y1="-20" x2="0" y2="20" stroke="#1A1814" stroke-opacity="0.65" stroke-width="0.8"></line>
+          <polygon points="0,-24 -5,-12 5,-12" fill="#1A1814" fill-opacity="0.75"></polygon>
+          <rect x="-6" y="-38" width="12" height="10" fill="#EDE6D6"></rect>
+          <text x="-4" y="-30" font-family="JetBrains Mono, monospace" font-size="9" fill="#1A1814" fill-opacity="0.75" letter-spacing="1.5">N</text>
+        </g>
+      </svg>
+</figure>
+
+<style>
+  .topo { position: relative; margin: 0; }
+  .topo svg { display: block; width: 100%; height: auto; }
+  .topo-label, .topo-coord {
+    position: absolute;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .topo-label { top: 0.5rem; left: 0.75rem; }
+  .topo-coord { top: 0.5rem; right: 0.75rem; }
+</style>
