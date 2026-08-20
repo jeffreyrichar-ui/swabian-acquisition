@@ -36,7 +36,12 @@ for (const [from, to] of Object.entries(redirects)) {
 
 // 4. per page invariants
 const phoneVariants = [/\(\d{3}\)\s?\d{3}[.-]?\d{4}/g, /\d{3}[.-]\d{3}[.-]\d{4}/g];
+// Ownership verification files are not pages: search engines require their exact
+// bytes, so they carry no title, h1, description or canonical by design.
+const isVerificationFile = (f) => /\/(google[a-f0-9]{16}|BingSiteAuth)\.html$/.test(f);
+
 for (const file of htmlFiles(DIST)) {
+  if (isVerificationFile(file)) continue;
   const html = readFileSync(file, "utf8");
   const rel = file.replace(DIST, "");
   const isRedirectStub = html.includes("http-equiv=\"refresh\"");

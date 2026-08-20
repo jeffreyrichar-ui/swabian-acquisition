@@ -27,6 +27,10 @@
     "country": "US",
     "street_address": null
   },
+  "verification": {
+    "google": "DzPxC9gld4_DD28vAx-v_254c_PxT23fZP9xCYbPYxw",
+    "bing": null
+  },
   "analytics": {
     "provider": "plausible",
     "domain": "swabian.co",
