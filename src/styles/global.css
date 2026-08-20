@@ -274,3 +274,36 @@ header.site { border-bottom: 1px solid var(--rule); }
 header.site a.brand { font-weight: 400; letter-spacing: -0.01em; }
 header.site a.brand .ac { font-style: italic; color: var(--copper-2); }
 nav.site a { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; }
+
+/* Interior pages used to stop dead at the last paragraph. Every page except the
+   contact page now ends on the phone number, in the ink band the homepage uses,
+   so the call to action does not depend on someone finding the nav. */
+.page-close {
+  margin: 4rem 0 0;
+  padding: 1.9rem 2rem;
+  background: var(--ink);
+  color: var(--bone);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem 2rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.page-close .micro { color: var(--ochre); margin: 0; }
+.page-close-line {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  line-height: 1.2;
+  margin: 0.4rem 0 0;
+  max-width: 26rem;
+  color: var(--bone);
+}
+.page-close-actions { display: flex; flex-wrap: wrap; gap: 0.7rem; margin: 0; max-width: none; }
+.page-close .cta { background: var(--copper); border-color: var(--copper); color: var(--bone); }
+.page-close .cta:hover { background: var(--bone); border-color: var(--bone); color: var(--ink); }
+.page-close .cta-ghost { color: var(--bone); border-color: rgba(237, 230, 214, 0.45); }
+.page-close .cta-ghost:hover { background: rgba(237, 230, 214, 0.12); color: var(--bone); }
+
+/* The eyebrow gives each interior page a label above the headline, the way the
+   old site numbered its sections. */
+.body > .eyebrow { margin-bottom: 0.6rem; }

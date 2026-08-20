@@ -53,10 +53,25 @@ const nodes = graph([
   ) : (
     <div class="wrap">
       <div class="body">
+        <p class="eyebrow">{page.navLabel ?? page.title}</p>
         <h1>{page.h1}</h1>
         <slot />
         <Faq items={faqItems} />
       </div>
+    </div>
+  )}
+  {pageKey !== "contact" && (
+    <div class="wrap">
+      <aside class="page-close">
+        <div>
+          <p class="micro">Talk to the buyer</p>
+          <p class="page-close-line">One conversation. Thirty minutes, confidential, no documents.</p>
+        </div>
+        <p class="page-close-actions">
+          <a class="cta" href={`tel:${entity.contact.telephone}`}>{entity.contact.telephone_display}</a>
+          <a class="cta-ghost" href="/contact/">Write instead</a>
+        </p>
+      </aside>
     </div>
   )}
 </Base>

@@ -11,14 +11,14 @@ const dataset = {
   "@type": "Dataset",
   name: `Treasure Valley Business Succession Index, ${edition}`,
   description:
-    "How old the businesses in Ada and Canyon counties are, how many stop having " +
+    "Firm age and firm exits for the Boise metro area, and establishment counts by trade for Ada and Canyon counties. How old the businesses are, how many stop having " +
     "employees each year, and how many establishments there are by trade. Built " +
     "only from data published by federal statistical agencies.",
   url: canonical,
   identifier: `tvbsi-${edition}`,
   license: "https://creativecommons.org/licenses/by/4.0/",
   creator: { "@id": `${entity.url}/#organization` },
-  spatialCoverage: "the Treasure Valley and southwest Idaho",
+  spatialCoverage: "Boise City metropolitan statistical area: Ada, Boise, Canyon, Gem and Owyhee counties, Idaho",
   isAccessibleForFree: true,
   distribution: [
     { "@type": "DataDownload", encodingFormat: "text/csv", contentUrl: dataUrl },
@@ -29,7 +29,7 @@ const nodes = graph([organization(), person(), website(), dataset]);
 ---
 <Base
   title={`Treasure Valley Business Succession Index | ${entity.name}`}
-  description="How old Treasure Valley businesses are, how many stop having employees each year, and how many establishments there are by trade. Federal data, sources shown."
+  description="How old Boise metro businesses are, how many stop having employees each year, and how many establishments there are by trade. Federal data, sources shown."
   canonical={canonical}
   graph={nodes}
 >
@@ -37,7 +37,7 @@ const nodes = graph([organization(), person(), website(), dataset]);
     <h1>Treasure Valley Business Succession Index</h1>
     <p class="answer">42.2% of employer firms in the Boise metro area have been trading for 11 years or more. That is 7,342 companies out of 17,411, counted by the Census Bureau in 2023. This page reports how old Boise businesses are, how many stop having employees each year, and how many establishments trade by trade.</p>
 
-    <h2>How long have Treasure Valley businesses been trading?</h2>
+    <h2>How long have Boise metro businesses been trading?</h2>
 
     <div class="scroll-x">
       <table>
