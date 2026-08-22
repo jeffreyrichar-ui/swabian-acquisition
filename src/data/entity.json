@@ -144,11 +144,11 @@
     "geography": "Boise, the Treasure Valley and southwest Idaho",
     "revenue_min_usd": 1000000,
     "revenue_max_usd": null,
-    "preferred": "B2B and commercial services",
+    "preferred": "B2B and commercial services, though any established business is worth a look",
     "min_years_operating": 5,
     "exclusions": [
       "restaurants",
-      "retail",
+      "retail storefronts",
       "franchises",
       "startups",
       "turnarounds",
